@@ -1,69 +1,156 @@
+/* ===== Background Setup ===== */
+body {
+    background: url("../images/flightView.jpg") no-repeat center center/cover;
+    min-height: 100vh;
+    position: relative;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Dark overlay for readability */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: -1;
+}
+
+/* ===== Navbar Buttons ===== */
+.btn-nav {
+    color: white !important;
+    margin-left: 12px;
+    padding: 8px 14px;
+    transition: .3s ease-in-out;
+    border-radius: 8px;
+}
+.btn-nav:hover {
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-2px);
+}
+
+/* Navbar Search */
+.search-bar input,
+.search-bar button {
+    border-radius: 10px;
+}
+
+/* ===== Search Info Box ===== */
+.search-info {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* ===== Loading Spinner ===== */
+.loading-spinner {
+    text-align: center;
+    padding: 40px;
+    color: white;
+}
+
+/* ===== No Flights Box ===== */
+.no-flights {
+    text-align: center;
+    padding: 40px;
+    color: white;
+    background: rgba(255,255,255,0.10);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+/* =============================
+      OLD CARD DESIGN PRESERVED
+   ============================= */
+
+/* Flight Card Main Styling */
 .flight-card {
     transition: transform 0.2s, box-shadow 0.2s;
     margin-bottom: 20px;
-    border: 1px solid #dee2e6;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    animation: fadeUp .7s ease forwards;
+    opacity: 0;
 }
+
+/* Hover Effect */
 .flight-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
+
+/* Flight Card Header */
 .flight-header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     padding: 15px;
-    border-radius: 5px 5px 0 0;
+    border-radius: 12px 12px 0 0;
 }
+
+/* Flight Main Info */
 .flight-info {
     padding: 20px;
 }
+
+/* Route Row (From → To) */
 .route-info {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 15px 0;
 }
+
+/* Airport Codes */
 .city-code {
     font-size: 24px;
     font-weight: bold;
-    color: #667eea;
+    color: #ffe17d; /* golden shade for visibility */
 }
+
+/* Arrow Icon */
 .arrow-icon {
-    font-size: 20px;
-    color: #6c757d;
+    font-size: 22px;
+    color: white;
 }
+
+/* Flight Details Row */
 .flight-details {
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
     padding-top: 15px;
-    border-top: 1px solid #e9ecef;
+    border-top: 1px solid rgba(255,255,255,0.20);
 }
+
+/* Each Detail Box */
 .detail-item {
     text-align: center;
 }
+
+/* Detail Label */
 .detail-label {
     font-size: 12px;
-    color: #6c757d;
+    color: #e0e0e0;
     text-transform: uppercase;
 }
+
+/* Detail Value */
 .detail-value {
     font-size: 16px;
     font-weight: 600;
-    color: #212529;
+    color: #ffffff;
     margin-top: 5px;
 }
-.loading-spinner {
-    text-align: center;
-    padding: 40px;
-}
-.no-flights {
-    text-align: center;
-    padding: 40px;
-    color: #6c757d;
-}
-.search-info {
-    background-color: #e7f3ff;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
+
+/* ===== Animation ===== */
+@keyframes fadeUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
