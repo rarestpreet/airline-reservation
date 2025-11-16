@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
@@ -21,14 +22,9 @@ public class EmailUtil {
     @Value("${com.flightreservation.itinerary.email.subject")
     private String EMAIL_SUBJECT = "Itinerary for your Flight";
 
-    private final JavaMailSender javaMailSender;
+    private final JavaMailSender javaMailSender =  new JavaMailSenderImpl();
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmailUtil.class);
-
-    @Autowired
-    public EmailUtil(JavaMailSender javaMailSender) {
-        this.javaMailSender = javaMailSender;
-    }
 
     public void sendItinerary(String toAddress, String filePath){
 

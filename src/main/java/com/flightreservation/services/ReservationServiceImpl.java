@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
+
 public class ReservationServiceImpl implements ReservationService {
 
     @Value("${com.flightreservation.flightreservation.itinerary.dirpath}")
@@ -27,18 +28,20 @@ public class ReservationServiceImpl implements ReservationService {
     private final FlightRepository flightRepository;
     private final PassengerRepository passengerRepository;
     private final ReservationRepository reservationRepository;
-    private final PdfGenerator pdfGenerator;
-    private final EmailUtil emailUtil;
+    private final PdfGenerator pdfGenerator = new PdfGenerator();
+    private final EmailUtil emailUtil = new EmailUtil();
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ReservationServiceImpl.class);
 
     @Autowired
-    public ReservationServiceImpl(FlightRepository flightRepository, PassengerRepository passengerRepository, ReservationRepository reservationRepository, PdfGenerator pdfGenerator, EmailUtil emailUtil) {
+    public ReservationServiceImpl(
+            FlightRepository flightRepository,
+            PassengerRepository passengerRepository,
+            ReservationRepository reservationRepository
+    ) {
         this.flightRepository = flightRepository;
         this.passengerRepository = passengerRepository;
         this.reservationRepository = reservationRepository;
-        this.pdfGenerator = pdfGenerator;
-        this.emailUtil = emailUtil;
     }
 
 
