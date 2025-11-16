@@ -4,75 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complete Reservation - HappyHour Airlines</title>
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/app.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/complete-reservation.css">
 </head>
+
 <body>
-<div class="container mt-5">
-    <div class="card">
-        <div class="card-header">
-            <h3>Complete Reservation</h3>
-        </div>
-        <div class="card-body">
-            <div id="flightInfo" class="mb-4"></div>
 
-            <form id="reservationForm">
-                <h5>Passenger Details</h5>
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <label for="passengerFirstName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="passengerFirstName" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="passengerMiddleName" class="form-label">Middle Name</label>
-                        <input type="text" class="form-control" id="passengerMiddleName">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="passengerLastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="passengerLastName" required>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="passengerEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="passengerEmail" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="passengerPhone" class="form-label">Phone</label>
-                        <input type="tel" class="form-control" id="passengerPhone" required>
-                    </div>
-                </div>
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent px-4 mt-2">
+    <a class="navbar-brand fw-bold fs-3 text-white" href="../pages/index.html">✈ HappyHour Airlines</a>
 
-                <h5 class="mt-4">Payment Details</h5>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="nameOnCard" class="form-label">Name on Card</label>
-                        <input type="text" class="form-control" id="nameOnCard" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="cardNumber" class="form-label">Card Number</label>
-                        <input type="text" class="form-control" id="cardNumber" required>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="expirationDate" class="form-label">Expiration Date</label>
-                        <input type="text" class="form-control" id="expirationDate" placeholder="MM/YY" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="securityCode" class="form-label">Security Code</label>
-                        <input type="text" class="form-control" id="securityCode" required>
-                    </div>
-                </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-                <button type="submit" class="btn btn-primary">Complete Reservation</button>
-            </form>
-        </div>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <form class="d-flex me-3 search-bar">
+            <input class="form-control" type="search" placeholder="Search flights...">
+            <button class="btn btn-light ms-2"><i class="fa fa-search"></i></button>
+        </form>
+
+        <ul class="navbar-nav nav-buttons">
+            <li class="nav-item"><a class="nav-link btn-nav" href="findFlights.html">Find Flights</a></li>
+            <li class="nav-item"><a class="nav-link btn-nav" href="displayFlights.html">Available Flights</a></li>
+            <li class="nav-item"><a class="nav-link btn-nav" href="login.html">Login</a></li>
+        </ul>
     </div>
+</nav>
+
+
+<!-- ===== COMPLETE RESERVATION CARD ===== -->
+<div class="container d-flex justify-content-center align-items-center mt-5">
+
+    <div class="reservation-card p-4 shadow-lg rounded">
+
+        <h3 class="text-center text-white fw-bold mb-4">
+            <i class="fa fa-clipboard-check me-2"></i> Complete Reservation
+        </h3>
+
+        <!-- Flight Info (loaded by JS) -->
+        <div id="flightInfo" class="glass-box p-3 mb-4 text-white"></div>
+
+        <form id="reservationForm">
+
+            <h5 class="text-white mb-3">Passenger Details</h5>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label text-white">First Name</label>
+                    <input type="text" class="form-control input-custom" id="passengerFirstName" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label text-white">Middle Name</label>
+                    <input type="text" class="form-control input-custom" id="passengerMiddleName">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label text-white">Last Name</label>
+                    <input type="text" class="form-control input-custom" id="passengerLastName" required>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label class="form-label text-white">Email</label>
+                    <input type="email" class="form-control input-custom" id="passengerEmail" required 
+                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                        title="Enter a valid email address">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label text-white">Phone</label>
+                    <input type="tel" class="form-control input-custom" id="passengerPhone" required>
+                </div>
+            </div>
+
+            <h5 class="text-white mb-3">Payment Details</h5>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label text-white">Name on Card</label>
+                    <input type="text" class="form-control input-custom" id="nameOnCard" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label text-white">Card Number</label>
+                    <input type="text" class="form-control input-custom" id="cardNumber" required>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label class="form-label text-white">Expiration Date</label>
+                    <input type="text" class="form-control input-custom" id="expirationDate" placeholder="MM/YY" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label text-white">Security Code</label>
+                    <input type="text" class="form-control input-custom" id="securityCode" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-reserve w-100">
+                <i class="fa fa-check me-2"></i> Complete Reservation
+            </button>
+
+        </form>
+
+    </div>
+
 </div>
 
-<script src="/js/utils.js"></script>
-<script src="/js/api.js"></script>
-<script src="/js/complete-reservation.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/complete-reservation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

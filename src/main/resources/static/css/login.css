@@ -1,0 +1,82 @@
+/* Background Image */
+body {
+    background: url("../images/flight.jpg") no-repeat center center/cover;
+    min-height: 100vh;
+    position: relative;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Dark overlay */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    z-index: -1;
+}
+
+/* Navbar Styling (same as index.css) */
+.btn-nav {
+    color: white !important;
+    font-weight: 500;
+    margin-left: 12px;
+    padding: 8px 14px;
+    transition: .3s ease;
+    border-radius: 8px;
+}
+.btn-nav:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+.search-bar input {
+    border-radius: 10px;
+}
+
+.search-bar button {
+    border-radius: 10px;
+}
+
+
+/* ===== Login Card ===== */
+.login-card {
+    width: 420px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
+    animation: fadeUp 1.2s ease;
+}
+
+/* Inputs */
+.input-custom {
+    border-radius: 10px;
+    background: rgba(255,255,255,0.85);
+}
+
+/* Login Button */
+.btn-login {
+    background: #0d6efd;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: .3s ease-in-out;
+}
+.btn-login:hover {
+    background: #094cad;
+    transform: translateY(-3px);
+}
+
+/* Register Link */
+.link-reg:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
