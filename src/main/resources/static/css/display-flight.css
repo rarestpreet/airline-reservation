@@ -1,0 +1,69 @@
+.flight-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 20px;
+    border: 1px solid #dee2e6;
+}
+.flight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.flight-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 5px 5px 0 0;
+}
+.flight-info {
+    padding: 20px;
+}
+.route-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+.city-code {
+    font-size: 24px;
+    font-weight: bold;
+    color: #667eea;
+}
+.arrow-icon {
+    font-size: 20px;
+    color: #6c757d;
+}
+.flight-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
+}
+.detail-item {
+    text-align: center;
+}
+.detail-label {
+    font-size: 12px;
+    color: #6c757d;
+    text-transform: uppercase;
+}
+.detail-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #212529;
+    margin-top: 5px;
+}
+.loading-spinner {
+    text-align: center;
+    padding: 40px;
+}
+.no-flights {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+}
+.search-info {
+    background-color: #e7f3ff;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}

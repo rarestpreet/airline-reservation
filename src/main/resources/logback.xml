@@ -3,25 +3,30 @@
     <property name="LOG_DIR" value="/var/tmp/logs/flightReservation" />
     <property name="FILE_PREFIX" value="flightreservation" />
 
-    <appender name="FILE"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_DIR}/${FILE_PREFIX}.log</file>
+
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</Pattern>
         </encoder>
 
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_DIR}/archived/${FILE_PREFIX}.%d{yyyy-MM-dd}.%i.log
-            </fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy
-                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
+        <!-- Size + Time based rolling policy -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- keep the rolling files in archived/ with a date and index -->
+            <fileNamePattern>${LOG_DIR}/archived/${FILE_PREFIX}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+
+            <!-- rotate when each file reaches 10MB -->
+            <maxFileSize>10MB</maxFileSize>
+
+            <!-- keep 30 days of history (adjust as needed) -->
+            <maxHistory>30</maxHistory>
+
+            <!-- optionally cap total size of archived logs -->
+            <totalSizeCap>1GB</totalSizeCap>
         </rollingPolicy>
     </appender>
 
-    <root leve="info">
+    <root level="INFO">
         <appender-ref ref="FILE" />
     </root>
-
 </configuration>
